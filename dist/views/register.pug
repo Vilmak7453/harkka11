@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+	div(class="container")
+
+		h1=title
+
+		div(class="col m4")
+			form(method='POST' action='/user/register')
+				div.form-group
+					label(for='email') S&auml;hk&ouml;posti:
+					input#email.form-control(type='text' placeholder='esimerkki@email.com' name='email' required='true' value=(undefined===email ? '' : email))
+				div.form-group
+					label(for='password1') Salasana:
+					input#password1.form-control(type='text' placeholder='1-20 merkkiä' name='password1' required='true')
+					label(for='password2') Salasana uudelleen:
+					input#password2.form-control(type='text' placeholder='1-20 merkkiä' name='password2' required='true')
+				button.btn.btn-primary(type='submit') Rekister&ouml;idy
+			if errors 
+				ul
+					for error in errors
+						li!= error.msg

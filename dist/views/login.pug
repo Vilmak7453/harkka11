@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+	div(class="container")
+
+		h1=title
+
+		div(class="col m4")
+			form(method='POST' action='/user/login')
+				div.form-group
+					label(for='email') S&auml;hk&ouml;posti:
+					input#email.form-control(type='text' name='email' required='true' value=(undefined===email ? '' : email))
+				div.form-group
+					label(for='password') Salasana:
+					input#password1.form-control(type='text' name='password' required='true')
+				button.btn.btn-primary(type='submit') Kirjaudu sis&auml;&auml;n
+			if errors 
+				ul
+					for error in errors
+						li!= error.msg
